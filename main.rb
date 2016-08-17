@@ -15,3 +15,5 @@ puts Count.add([person.count_friends, person2.count_friends, person3.count_frien
 
 buzz = Phone.new
 puts buzz.number
+
+Adtegrity::Layer.status
