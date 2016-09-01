@@ -2,17 +2,27 @@ module Adtegrity
   class Friend
     attr_accessor :name, :friends_list
 
-    def initialize
-      @friends_list = []
-      @name = "New Employee"
+    def self.call(*args)
+      new(*args).call
+    end
+
+    def initialize(friends_list = [], name = "New Employee")
+      @friends_list = friends_list
+      @name = name
+    end
+
+    def call
+      puts "I've been called"
+      self.show
     end
 
     def count_friends
       @friends_list.length
     end
-    
+
     def show
-      @friends_list.each{|f| puts f}
+      #can reference friends_list without @friends_list due to attr_accessor on that value
+      friends_list.each{|f| puts f}
     end
 
     def add(friends = [])

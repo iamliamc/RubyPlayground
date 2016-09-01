@@ -10,6 +10,8 @@ person.add(["Liam", "George", "Patty"])
 person2.add(["Tony", "Bill"])
 person3.add(["Sam", "Erica"])
 
+Adtegrity::Friend.call(["Todd", "Bryce"], "Liam")
+
 puts "Load module Count, get total friends should be 7"
 puts Count.add([person.count_friends, person2.count_friends, person3.count_friends])
 
