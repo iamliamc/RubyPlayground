@@ -20,5 +20,14 @@ begin
     log.info "Something in the array was greater than 1"
   end
 
+begin
+  [1, 2, 3].each do |n|
+    n / 0
+  end
+rescue Exception => e
+  log.error "#{e.message}"
+end
+
+
 logfile.close
 log.close
