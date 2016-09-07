@@ -1,5 +1,6 @@
 Dir["/Users/liam/dev/RubyPlayground/lib/*.rb"].each {|file| require file }
 require 'rspec'
+require 'logger'
 
 $count = 0
 describe "test" do
@@ -45,5 +46,20 @@ describe "testing Adtegrity module" do
 
   it "fails when friends add is not called" do
     expect(friend.count_friends).to eq(3)
+  end
+end
+
+describe "testing Logger & my ability to read-write files" do
+  let(:logger) {Logger.new('spec.log')}
+  it "can log correctly" do
+    logger.info "General Logging"
+    logger.info "More General Logging"
+    File.open("spec.log").each_with_index do |line, idx|
+      if idx == 1
+        expect(line).to eq("General Logging")
+      elsif idx == 2
+        expect(line).to eq("More General Logging")
+      end
+    end
   end
 end
