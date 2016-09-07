@@ -50,6 +50,7 @@ describe "testing Adtegrity module" do
 end
 
 describe "testing Logger & my ability to read-write files" do
+  %x(rm spec.log)
   let(:logger) {Logger.new('spec.log')}
   it "can log correctly" do
     logger.info "General Logging"
