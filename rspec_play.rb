@@ -56,10 +56,9 @@ describe "testing Logger & my ability to read-write files" do
     logger.info "More General Logging"
     File.open("spec.log").each_with_index do |line, idx|
       if idx == 1
-        expect(line).to eq("General Logging")
+        expect(/(?<result>INFO -- : (?<answer>.*)\s)/.match(line)["answer"]).to eq("General Logging")
       elsif idx == 2
-        expect(line).to eq("More General Logging")
-      end
+        expect(/(?<result>INFO -- : (?<answer>.*)\s)/.match(line)["answer"]).to eq("More General Logging")      end
     end
   end
 end
