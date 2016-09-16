@@ -28,6 +28,12 @@ class AnyPerson < SimpleDelegator
       puts "I don't know this object"
     end
   end
+
+  def whatAmI
+    puts __getobj__.class.name
+    puts "My Methods are:"
+    (__getobj__.methods - Object.methods).each {|m| puts m}
+  end
 end
 
 
@@ -35,8 +41,10 @@ p = Person.new("Liam", "Blue")
 op = OtherPerson.new("George", "Red")
 
 a1 = AnyPerson.new(p)
+a1.whatAmI
 puts a1.name
 a1.color
 a2 = AnyPerson.new(op)
+a2.whatAmI
 puts a2.name
 a2.color
