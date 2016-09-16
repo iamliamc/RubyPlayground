@@ -1,3 +1,5 @@
+# http://ruby-doc.org/stdlib-1.9.3/libdoc/delegate/rdoc/SimpleDelegator.html
+
 class Person
   attr_accessor :name, :fav_color
 
