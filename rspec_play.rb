@@ -45,7 +45,7 @@ describe "testing Adtegrity module" do
   end
 
   it "fails when friends add is not called" do
-    expect(friend.count_friends).to eq(3)
+    expect(friend.count_friends).to eq(0)
   end
 end
 
@@ -59,7 +59,30 @@ describe "testing Logger & my ability to read-write files" do
       if idx == 1
         expect(/(?<result>INFO -- : (?<answer>.*)\s)/.match(line)["answer"]).to eq("General Logging")
       elsif idx == 2
-        expect(/(?<result>INFO -- : (?<answer>.*)\s)/.match(line)["answer"]).to eq("More General Logging")      end
+        expect(/(?<result>INFO -- : (?<answer>.*)\s)/.match(line)["answer"]).to eq("More General Logging")
+      end
     end
   end
+
+describe "doing a little stubbing" do
+  let(:friend) {Adtegrity::Friend.new}
+
+  it "can stub with args a method with no args" do
+    friend.stub(:stub_test) {|arg|
+      "This is my arg: #{arg}!"
+    }
+    expect(friend.stub_test("Hello World")).to eq("This is my arg: Hello World!")
+  end
+
+  it "can stub args with different syntax" do
+    friend.stub(:stub_test) do |arg1, arg2|
+      "This is arg1: #{arg1}, this is arg2: #{arg2}"
+    end
+
+    expect(friend.stub_test("Liam", "Considine")).to eq("This is arg1: Liam, this is arg2: Considine")
+  end
+
+
+end
+
 end

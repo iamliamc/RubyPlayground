@@ -20,6 +20,10 @@ module Adtegrity
       @friends_list.length
     end
 
+    def stub_test
+      "This is a stub test!"
+    end
+
     def show
       #can reference friends_list without @friends_list due to attr_accessor on that value
       friends_list.each{|f| puts f}
