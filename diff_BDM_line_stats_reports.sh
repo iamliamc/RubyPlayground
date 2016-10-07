@@ -1,4 +1,4 @@
-#cd "/Users/liam/Downloads/test/"
+cd "/Users/liam/Downloads/test/"
 
 files=(*.csv)
 
