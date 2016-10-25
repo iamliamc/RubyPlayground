@@ -16,3 +16,4 @@ c.add_rental(r2)
 puts "Made it to Customer statement"
 
 c.statement
+c.html_statement
