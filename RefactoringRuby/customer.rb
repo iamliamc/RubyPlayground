@@ -20,18 +20,18 @@ class Customer
     end
     # add footer lines
     result += "Amount owed is #{total_charge}\n"
-    result += "You earned #{frequent_renter_points} frequent renter points"
+    result += "You earned #{total_frequent_renter_points} frequent renter points"
     puts result
   end
 
   private
 
   def total_charge
-    result = 0
-    @rentals.each do |element|
-      result += element.charge
-    end
-    result
+    @rentals.inject(0) { |sum, rental| sum + rental.charge}
+  end
+
+  def total_frequent_renter_points
+    @rentals.inject(0) { |sum, rental| sum + rental.frequent_renter_points}
   end
 
 end
