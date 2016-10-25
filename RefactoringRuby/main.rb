@@ -13,4 +13,6 @@ c = Customer.new("Liam")
 c.add_rental(r)
 c.add_rental(r2)
 
+puts "Made it to Customer statement"
+
 c.statement
