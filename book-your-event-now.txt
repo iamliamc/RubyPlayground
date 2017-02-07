@@ -1,0 +1,63 @@
+Please add the following tag immediately after the BOOK YOUR EVENT NOW button
+
+
+<span id="adtpix107704"></span>
+
+
+Please add the following code immediately above the closing body tag: </body>
+
+
+<script>
+  var adty = {
+    isElementInViewport: function(el) {
+      var rect = el.getBoundingClientRect();
+
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    },
+    firstTimeVisible: function(el, callback) {
+      var neverBeenVisible = true;
+      var that = this;
+      return function () {
+        var visible = that.isElementInViewport(el);
+        if (neverBeenVisible && visible) {
+          neverBeenVisible = false;
+          if (typeof callback == 'function') {
+            callback();
+          }
+        }
+      }
+    },
+    loadPixel: function(id) {
+      var adtpix = document.createElement('script');
+      adtpix.src = '//a.adtpix.com/px/?id=' + id;
+      document.body.appendChild(adtpix);
+    },
+    loadPixelFirstTimeVisible: function(pixelId) {
+      var el = document.getElementById('adtpix' + pixelId);
+      var that = this;
+
+      var handler = this.firstTimeVisible(el, function() {
+        that.loadPixel(pixelId);
+      });
+
+      if (window.addEventListener) {
+        addEventListener('DOMContentLoaded', handler, false); 
+        addEventListener('load', handler, false); 
+        addEventListener('scroll', handler, false); 
+        addEventListener('resize', handler, false); 
+      } else if (window.attachEvent)  { // IE9+ :(
+        attachEvent('onDOMContentLoaded', handler);
+        attachEvent('onload', handler);
+        attachEvent('onscroll', handler);
+        attachEvent('onresize', handler);
+      }
+    }
+  };
+
+  adty.loadPixelFirstTimeVisible(107704);
+</script>
